@@ -1,4 +1,10 @@
-const nodemailer = require("nodemailer");
+import express from 'express';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config()
+
+const app = express()
+app.use(express.json())
 
 async function main(){
 
@@ -6,7 +12,7 @@ async function main(){
     service: 'gmail',
     auth: {
       user: "anand213200@gmail.com",
-      pass: "pkdokkftupqbukta"
+      pass: process.env.EMAIL_PASSWORD
     }});
 
     const mail_options = {
@@ -27,3 +33,9 @@ async function main(){
 }
 
 main().catch(console.error);
+
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
+    console.log(`server started running on port ${PORT}📦`)
+})
