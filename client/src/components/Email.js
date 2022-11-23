@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import "./Email.css";
 import Gmailpic from "./img/postbox.png";
-import gmailheader from "./img/gmail.png";
+import Gmailheader from "./img/gmail.png";
 import swal from "sweetalert";
 
 function Email() {
@@ -38,7 +38,7 @@ function Email() {
         <div className="card shadow-lg mt-3 p-5">
           <div className="text-center mb-4">
             <h3>
-              <img className="email-img" src={gmailheader} /> Node-Mailer
+              <img className="email-img" src={Gmailheader} /> Node-Mailer
             </h3>
           </div>
           <div className="row">
