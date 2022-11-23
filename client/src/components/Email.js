@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from 'axios';
 import "./Email.css";
 import Gmailpic from "./img/postbox.png";
 import gmailheader from "./img/gmail.png";
+import swal from "sweetalert";
 
 function Email() {
+
+  const [to, setTo] = useState("");
+  const [subject, setSubject] = useState("");
+  const [text, setText] = useState("");
+
+  async function sendemail(){
+
+    const response = await axios.post('/sendemail',{
+      to: to,
+      subject: subject,
+      text: text
+    })
+
+    setTo("");
+    setSubject("");
+    setText("");
+
+    
+    swal({
+      title: "Good job!",
+      text: "Email sent Successfully...",
+      icon: "success",
+      button: "ok",
+    });
+    
+  }
   return (
     <>
       <div className="container">
@@ -17,13 +45,15 @@ function Email() {
             <div className="col-md-6">
               <div className="card shadow p-3">
                 <form>
-                  <h4 className="text-center mt-3 mb-4">New Message</h4>
+                  <h4 className="text-center mt-3 mb-4">📝New Message</h4>
                   <div className="mb-3">
                     <input
                       type="email"
                       className="form-control"
                       id="email"
                       placeholder="Email"
+                      value={to} 
+                      onChange={(e) => { setTo(e.target.value) }}
                     />
                   </div>
                   <div className="mb-3">
@@ -32,19 +62,23 @@ function Email() {
                       className="form-control"
                       id="subject"
                       placeholder="subject"
+                      value={subject} 
+                      onChange={(e) => { setSubject(e.target.value) }}
                     />
                   </div>
                   <div className="mb-3">
                     <input
                       type="text"
                       className="form-control"
-                      id="subject"
+                      id="text"
                       placeholder="text"
+                      value={text} onChange={(e) => { setText(e.target.value) }}
                     />
                   </div>
                   <button
                     className="login-page-btn btn btn-primary w-100 mb-3"
                     type="button"
+                    onClick={sendemail}
                   >
                     <i class="fa-solid fa-right-to-bracket"></i> Send
                   </button>
