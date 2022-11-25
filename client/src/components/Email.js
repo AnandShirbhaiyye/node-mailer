@@ -38,12 +38,12 @@ function Email() {
         <div className="card shadow-lg mt-3 p-5">
           <div className="text-center mb-4">
             <h3>
-              <img className="email-img" src={Gmailheader} /> Node-Mailer
+              <img className="email-img" src={Gmailheader} alt="" /> Node-Mailer
             </h3>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <div className="card shadow p-3">
+              <div className="card shadow-sm p-3">
                 <form>
                   <h4 className="text-center mt-3 mb-4">📝New Message</h4>
                   <div className="mb-3">
@@ -86,7 +86,7 @@ function Email() {
               </div>
             </div>
             <div className="col-md-6">
-              <img className="email-pic-img mt-5" src={Gmailpic} />
+              <img className="email-pic-img mt-5" src={Gmailpic} alt="" />
             </div>
           </div>
         </div>
